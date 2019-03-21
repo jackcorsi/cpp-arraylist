@@ -1,0 +1,5 @@
+/*
+
+Write class template for generic Array.
+
+*/
