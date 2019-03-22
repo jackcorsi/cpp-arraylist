@@ -26,12 +26,12 @@ int main()
 
 	cout<< "========== Float Array ==========\n";
    	Array<float> v3;
-   	v3.push_back(100.4);
-   	v3.push_back(101.3);
-   	v3.push_back(102.2);
-   	v3.push_back(103.1);
-   	v3.insert(2, 5.3);	
-   	v3.insert(3, 6.2);
+   	v3.push_back(100.4f);
+   	v3.push_back(101.3f);
+   	v3.push_back(102.2f);
+   	v3.push_back(103.1f);
+   	v3.insert(2, 5.3f);
+   	v3.insert(3, 6.2f);
 
 	Array<float> v4;
 	v4 = v3;
@@ -48,4 +48,40 @@ int main()
    		cout <<"\n"<< *itF << "\n";
 
 	// Try more operations for correctness testing
+	Array <int> nums(3);
+	cout << "nums.size():" << nums.size() << endl;
+	cout << "nums.capacity():" << nums.capacity() << endl;
+	cout << "Inserting 4" << endl;
+	nums.push_back(4);
+
+	cout << "nums.size():" << nums.size() << endl;
+	cout << "nums.capacity():" << nums.capacity() << endl;
+	cout << "Inserting 9" << endl;
+	nums.push_back(9);
+
+	cout << "nums.size():" << nums.size() << endl;
+	cout << "nums.capacity():" << nums.capacity() << endl;
+	cout << "Inserting 72" << endl;
+	nums.push_back(72);
+
+	cout << "nums.size():" << nums.size() << endl;
+	cout << "nums.capacity():" << nums.capacity() << endl;
+	cout << "Inserting -10" << endl;
+	nums.push_back(-10);
+
+	cout << "nums.size():" << nums.size() << endl;
+	cout << "nums.capacity():" << nums.capacity() << endl;
+	cout << "Inserting -10" << endl;
+
+	cout << "nums[3]=" << nums[3] << endl;
+	cout << "popping back" << endl;
+	nums.pop_back();
+	cout << "nums[2]=" << nums[2] << endl;
+
+	cout << "reserving 30" << endl;
+	nums.reserve(30);
+
+	cout << "nums[2]=" << nums[2] << endl;
+	cout << "nums.capacity():" << nums.capacity() << endl;
+
 }

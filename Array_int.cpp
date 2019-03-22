@@ -1,4 +1,4 @@
-class  Array
+class  IntArray
 {
 
 	private:
@@ -10,9 +10,9 @@ class  Array
 	public:
     typedef int * iterator;			// used to access elements of Array
 
-    Array();						// default constructor
-    Array(unsigned int size);		
-    ~Array();						
+    IntArray();						// default constructor
+    IntArray(unsigned int size);
+    ~IntArray();
 
     unsigned int capacity();		// Returns capacity of Array
     unsigned int size();			// Returns number of elements in Array 
@@ -27,13 +27,13 @@ class  Array
     void resize(unsigned int size);   		// Used to resize array
 
     int & operator[](unsigned int index);  	// Overloaded [] for array-like access
-    Array & operator=(const Array &);		// Overloaded assignment operator; You need to define this operator
+    IntArray & operator=(const IntArray &);		// Overloaded assignment operator; You need to define this operator
 	void insert(unsigned int position, int value);	// Inserts an element with 'value' in the 'begin()+position' index
 													// You need to define this function		
     void clear();									// Clears Array
 };
 
-Array::Array()
+IntArray::IntArray()
 {
     array_capacity = 0;
     array_size = 0;
@@ -41,7 +41,7 @@ Array::Array()
 }
 
 
-Array::Array(unsigned int size)
+IntArray::IntArray(unsigned int size)
 {
     array_capacity = size;
     array_size = size;
@@ -51,7 +51,7 @@ Array::Array(unsigned int size)
 /* 
  * You need to define assignment operator in Array_generic.cpp.
 */
-Array & Array::operator = (const Array & v)
+IntArray & IntArray::operator = (const IntArray & v)
 {
     delete[ ] buffer;
 
@@ -67,44 +67,44 @@ Array & Array::operator = (const Array & v)
  * array-like selection operator '[]'
  * E.g. Array A;  A[n-1] returns the n th element from the front. 
 */
-int& Array::operator[](unsigned int index)
+int& IntArray::operator[](unsigned int index)
 {
 	return buffer[index];
 }  
 
-Array::iterator Array::begin()
+IntArray::iterator IntArray::begin()
 {
     return buffer;
 }
 
-Array::iterator Array::end()
+IntArray::iterator IntArray::end()
 {
     return buffer + size();
 }
 
-int& Array::front()
+int& IntArray::front()
 {
     return buffer[0];
 }
 
-int& Array::back()
+int& IntArray::back()
 {
     return buffer[array_size - 1];
 }
 
-void Array::push_back(const int & v)
+void IntArray::push_back(const int & v)
 {
     if (array_size >= array_capacity)
         reserve(array_capacity + 10);
     buffer [array_size++] = v;
 }
 
-void Array::pop_back()
+void IntArray::pop_back()
 {
     array_size--;
 }
 
-void Array::reserve(unsigned int capacity)
+void IntArray::reserve(unsigned int capacity)
 {
     if(buffer == 0)
     {
@@ -122,18 +122,18 @@ void Array::reserve(unsigned int capacity)
     buffer = Newbuffer;
 }
 
-unsigned int Array::size()
+unsigned int IntArray::size()
 {
     return array_size;
 }
 
-void Array::resize(unsigned int size)
+void IntArray::resize(unsigned int size)
 {
     reserve(size);
     array_size = size;
 }
 
-unsigned int Array::capacity()
+unsigned int IntArray::capacity()
 {
     return array_capacity;
 }
@@ -143,7 +143,7 @@ unsigned int Array::capacity()
  * E.g. Existing Array A={1,3,9,12}. 
  * After insert(2,7) it becomes A={1,3,7,9,12}. 	
 */ 
-void Array::insert(unsigned int position, int value)
+void IntArray::insert(unsigned int position, int value)
 {
 	/*
 	YOUR CODE HERE
@@ -152,7 +152,7 @@ void Array::insert(unsigned int position, int value)
 }
 
 
-void Array::clear()
+void IntArray::clear()
 {
     array_capacity = 0;
     array_size = 0;
@@ -160,7 +160,7 @@ void Array::clear()
 }
 
 
-Array::~Array()
+IntArray::~IntArray()
 {
 	delete[ ] buffer;
 }

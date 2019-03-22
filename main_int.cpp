@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {  
-   	Array v1;
+   	IntArray v1;
    	v1.push_back(100);
    	v1.push_back(101);
    	v1.push_back(102);
@@ -13,7 +13,7 @@ int main()
    	v1.insert(2, 5);	
    	v1.insert(3, 6);
 
-   	Array::iterator it = v1.begin();
+   	IntArray::iterator it = v1.begin();
 
 	cout<<"Printing Array v1\n";
 	for(it=v1.begin(); it<v1.begin()+v1.size(); it++) 
