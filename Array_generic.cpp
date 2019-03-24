@@ -62,8 +62,9 @@ Array<T>::Array(unsigned int capacity) {
 
 template<class T>
 Array<T> &Array<T>::operator=(const Array<T> &other) {
-	if (array_capacity < other.size()) {
-		delete[] buffer;
+	if (array_capacity < other.size()) { //Reserve enough space for other's elements
+		if (buffer)
+			delete[] buffer;
 		buffer = new T[array_capacity = other.size()];
 	}
 
