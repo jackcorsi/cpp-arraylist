@@ -118,11 +118,13 @@ void Array<T>::reserve(unsigned int capacity) {
 		return;
 
 	T *new_buffer = new T[capacity];
+	if (buffer) { //Buffer remains uninitialised after default constructor
+		for (unsigned int i = 0; i < array_capacity; i++)
+			new_buffer[i] = buffer[i];
 
-	for (unsigned int i = 0; i < array_capacity; i++)
-		new_buffer[i] = buffer[i];
+		delete[] buffer;
+	}
 
-	delete[] buffer;
 	buffer = new_buffer;
 	array_capacity = capacity;
 }
