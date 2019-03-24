@@ -62,10 +62,14 @@ Array<T>::Array(unsigned int capacity) {
 
 template<class T>
 Array<T> &Array<T>::operator=(const Array<T> &other) {
-	reserve(other.capacity());
-	for (unsigned int i = 0; i < other.size(); i++)
+	if (array_capacity < other.size()) {
+		delete[] buffer;
+		buffer = new T[array_capacity = other.size()];
+	}
+
+	for (unsigned int i = 0; i < (array_size = other.size()); i++)
 		buffer[i] = other[i];
-	array_size = other.size();
+
 	return *this;
 }
 
@@ -114,13 +118,11 @@ void Array<T>::reserve(unsigned int capacity) {
 		return;
 
 	T *new_buffer = new T[capacity];
-	if (buffer) { //Buffer remains uninitialised after default constructor
-		for (unsigned int i = 0; i < array_capacity; i++)
-			new_buffer[i] = buffer[i];
 
-		delete[] buffer;
-	}
+	for (unsigned int i = 0; i < array_capacity; i++)
+		new_buffer[i] = buffer[i];
 
+	delete[] buffer;
 	buffer = new_buffer;
 	array_capacity = capacity;
 }
@@ -148,6 +150,9 @@ void Array<T>::insert(unsigned int position, const T &value) {
 template<class T>
 void Array<T>::clear() {
 	array_size = 0;
+	array_capacity = 0;
+	delete[] buffer;
+	buffer = nullptr;
 }
 
 template<class T>
