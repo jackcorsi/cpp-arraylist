@@ -44,7 +44,7 @@ int main()
 
 	v4.pop_back();
 	cout<< "After pop_back()\n";
-	for(itF=v4.begin(); itF<v4.begin()+v4.size(); itF++) 
+	for(itF=v4.begin(); itF<v4.begin()+v4.size(); itF++)
    		cout <<"\n"<< *itF << "\n";
 
 	// Try more operations for correctness testing
@@ -84,10 +84,17 @@ int main()
 	cout << "nums[2]=" << nums[2] << endl;
 	cout << "nums.capacity():" << nums.capacity() << endl;
 
-	cout << "Attempting to insert at position 99" << endl;
+	cout << "copy constructing" << endl;
+
+	Array<int> nums2(nums);
+
+	cout << "nums[2]=" << nums2[2] << endl;
+	cout << "nums.capacity():" << nums2.capacity() << endl;
+
+	cout << "Attempting to insert at position 4" << endl;
 	try {
-		nums.insert(99, 6);
+		nums2.insert(4, 6);
 	} catch (std::out_of_range &e) {
-		cout << "Exception was thrown";
+		cout << "Exception was thrown - it was meant to be";
 	}
 }
