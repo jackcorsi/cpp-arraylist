@@ -84,4 +84,10 @@ int main()
 	cout << "nums[2]=" << nums[2] << endl;
 	cout << "nums.capacity():" << nums.capacity() << endl;
 
+	cout << "Attempting to insert at position 99" << endl;
+	try {
+		nums.insert(99, 6);
+	} catch (std::out_of_range &e) {
+		cout << "Exception was thrown";
+	}
 }

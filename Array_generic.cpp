@@ -101,8 +101,7 @@ Array<T>::Array(const Array<T> &other) { //Copy constructor
 template<class T>
 Array<T> &Array<T>::operator=(const Array<T> &other) {
 	if (array_capacity < other.size()) { //Reserve enough space for other's elements
-		if (buffer)
-			delete[] buffer;
+		delete[] buffer;
 		buffer = new T[array_capacity = other.size()];
 	}
 
@@ -157,13 +156,10 @@ void Array<T>::reserve(unsigned int capacity) {
 		return;
 
 	T *new_buffer = new T[capacity];
-	if (buffer) { //Buffer remains uninitialised after default constructor
-		for (unsigned int i = 0; i < array_capacity; i++)
-			new_buffer[i] = buffer[i];
+	for (unsigned int i = 0; i < array_capacity; i++)
+		new_buffer[i] = buffer[i];
 
-		delete[] buffer;
-	}
-
+	delete[] buffer;
 	buffer = new_buffer;
 	array_capacity = capacity;
 }
@@ -212,8 +208,7 @@ void Array<T>::clear() {
 
 template<class T>
 Array<T>::~Array() {
-	if (buffer)
-		delete[] buffer;
+	delete[] buffer;
 }
 
 template<class T>
